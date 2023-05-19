@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecom Club</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EcomClubDiscordPayment.styles.css" asp-append-version="true" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <link rel="icon" type="image/ico" href="~/newicon.ico">
+</head>
+<body style="background-color: #757787">
+    <header>
+        <nav class="navbar navbar-light navbar-background box-shadow mb-3 fw-bold" style="background-color: rgb(41 38 38);">
+            <div class="container-fluid justify-content-start">
+                <a class="navbar-brand" href="https://hwpfitness.com/"><img src="~/images/logo.jpg" style="height:5rem;" /></a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-black" style="border-color: black !important">
+        <div class="container">
+            &copy; 2023 - The Ecom Club
+        </div>
+    </footer>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
