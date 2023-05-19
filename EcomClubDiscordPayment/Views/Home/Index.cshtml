@@ -1,10 +1,13 @@
 ﻿@{
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-    {
-        <button type="submit">Discord Link</button>
-    }
+<div class="text-center" style="margin-top: 100px">
+    @*<h1 class="display-4">Welcome</h1>*@
+    <input class="button-40" type="button" value="Join Discord" onclick="discordClick()" />
 </div>
+
+<script type="text/javascript">
+    function discordClick(){
+        window.location.href = '@Url.Content("~/Home/Stripe")';
+    }
+</script>

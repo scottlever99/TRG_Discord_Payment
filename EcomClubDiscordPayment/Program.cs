@@ -16,6 +16,8 @@ namespace EcomClubDiscordPayment
             builder.Services.AddDbContext<DatabaseContext>(d => d.UseMySQL(con));
 
             builder.Services.AddScoped<DbService>();
+            builder.Services.AddScoped<DiscordService>();
+
 
 
             var app = builder.Build();

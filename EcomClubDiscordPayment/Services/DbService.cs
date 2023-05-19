@@ -43,5 +43,13 @@ namespace EcomClubDiscordPayment.Services
             _dbContext.tokenHistory.Add(new TokenHistory() { token = token, used_at = DateTime.Now });
             _dbContext.SaveChanges();
         }
+
+        public bool CheckHistoryToken(string token)
+        {
+            var histToken = _dbContext.tokenHistory.FirstOrDefault(w => w.token == token);
+            if (histToken == null) return false;
+            if (histToken.token == token) return true;
+            return false;
+        }
     }
 }
