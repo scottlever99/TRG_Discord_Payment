@@ -19,7 +19,6 @@ namespace EcomClubDiscordPayment
             builder.Services.AddScoped<DiscordService>();
 
 
-
             var app = builder.Build();
             if (!app.Environment.IsDevelopment())
             {
