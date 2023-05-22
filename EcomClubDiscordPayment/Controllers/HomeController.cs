@@ -30,7 +30,14 @@ namespace EcomClubDiscordPayment.Controllers
         public IActionResult Stripe()
         {
             string token = _dbService.CreateToken();
-            return Redirect("https://buy.stripe.com/test_8wMdSD2P8dBYdMc4gi?client_reference_id=" + token);
+            //TEST //return Redirect("https://buy.stripe.com/test_8wMdSD2P8dBYdMc4gi?client_reference_id=" + token);
+
+
+            //TEST Live = https://buy.stripe.com/test_fZedQScitaTj1fa5kk
+
+            //PROD = https://buy.stripe.com/dR6dUy2p8deWbao7ss
+            return Redirect("https://buy.stripe.com/dR6dUy2p8deWbao7ss?client_reference_id=" + token);
+
         }
 
         public async Task<IActionResult> StripeRedirect([FromQuery]string checkout_session_id)
@@ -53,7 +60,7 @@ namespace EcomClubDiscordPayment.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return BadRequest("Process Failed. Contact: ecomclub@gmail.com");
+                return BadRequest("Process Failed. Contact: theecomclubuk@gmail.com");
             }
         }
 

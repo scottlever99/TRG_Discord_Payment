@@ -36,7 +36,7 @@ namespace EcomClubDiscordPayment.Services
 
                 HttpRequestMessage message = new()
                 {
-                    RequestUri = new Uri("https://discord.com/api/channels/1108099341232652440/invites"),
+                    RequestUri = new Uri("https://discord.com/api/channels/1110299565250322493/invites"),
                     Method = HttpMethod.Post,
                     Content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json")
                 };
