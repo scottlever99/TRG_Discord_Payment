@@ -33,14 +33,14 @@ namespace EcomClubDiscordPayment.Services
             return false;
         }
 
-        public void RemoveToken(string token)
+        public void RemoveToken(string token, string code, string checkoutId)
         {
             var removeToken = _dbContext.token.FirstOrDefault(w => w.token == token);
             if (removeToken == null) return;
             _dbContext.token.Remove(removeToken);
             _dbContext.SaveChanges();
 
-            _dbContext.tokenHistory.Add(new TokenHistory() { token = token, used_at = DateTime.Now });
+            _dbContext.tokenHistory.Add(new TokenHistory() { token = token, used_at = DateTime.UtcNow, inv_code = code, checkout_session_id = checkoutId });
             _dbContext.SaveChanges();
         }
 

@@ -7,5 +7,8 @@ namespace EcomClubDiscordPayment.Data.Tables
         [Key]
         public string token { get; set; }
         public DateTime used_at { get; set; }
+        public string inv_code { get; set; }
+        public string disc_name { get; set; }
+        public string checkout_session_id { get; set; }
     }
 }

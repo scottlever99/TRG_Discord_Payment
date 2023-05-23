@@ -50,11 +50,12 @@ namespace EcomClubDiscordPayment.Controllers
                 var service = new SessionService();
                 var session = service.Get(checkout_session_id);
                 var token = session.ClientReferenceId;
-                
-                if (!_dbService.Validate(token)) return BadRequest("Invalid Token");
-                _dbService.RemoveToken(token);
-                
+
                 var code = await _discord.GetInviteCode();
+
+                if (!_dbService.Validate(token)) return BadRequest("Invalid Token");
+                _dbService.RemoveToken(token, code, checkout_session_id);
+                
                 return RedirectToAction("Discord", new { code = code });
             }
             catch (Exception ex)
