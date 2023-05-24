@@ -40,7 +40,7 @@ namespace EcomClubDiscordPayment.Services
             _dbContext.token.Remove(removeToken);
             _dbContext.SaveChanges();
 
-            _dbContext.tokenHistory.Add(new TokenHistory() { token = token, used_at = DateTime.UtcNow, inv_code = code, checkout_session_id = checkoutId });
+            _dbContext.tokenHistory.Add(new TokenHistory() { token = token, used_at = DateTime.UtcNow, inv_code = code, checkout_session_id = checkoutId, disc_name = "" });
             _dbContext.SaveChanges();
         }
 

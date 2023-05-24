@@ -34,6 +34,7 @@ namespace EcomClubDiscordPayment.Controllers
 
 
             //TEST Live = https://buy.stripe.com/test_fZedQScitaTj1fa5kk
+            //return Redirect("https://buy.stripe.com/test_fZedQScitaTj1fa5kk?client_reference_id=" + token);
 
             //PROD = https://buy.stripe.com/dR6dUy2p8deWbao7ss
             return Redirect("https://buy.stripe.com/dR6dUy2p8deWbao7ss?client_reference_id=" + token);
