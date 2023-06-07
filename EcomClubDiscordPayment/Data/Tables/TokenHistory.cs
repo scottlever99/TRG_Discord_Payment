@@ -10,5 +10,6 @@ namespace EcomClubDiscordPayment.Data.Tables
         public string inv_code { get; set; }
         public string disc_name { get; set; }
         public string checkout_session_id { get; set; }
+        public string sub_id { get; set; }
     }
 }
