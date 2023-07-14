@@ -17,6 +17,8 @@ namespace EcomClubDiscordPayment
 
             builder.Services.AddScoped<DbService>();
             builder.Services.AddScoped<DiscordService>();
+            builder.Services.AddScoped<EmailService>();
+
 
             //TEst Stripe = "sk_test_51MygchAlSoLxBcHKjc6T16QCWcuHrZTOeJ2l67Fr4EbdbSLpwtzEXTpV6mAp0DkMnQV6G8o2SbVjZYF3VwtgIVFI00yjhgK614",
             //TEst Live Stripe = sk_test_51I88jPHy10dRIZQuiWpZ4xP3CSkYB6iOCiAzD9zXK4MJUbGHmeZiHGo0Qzz8UApg96GYWZi4lomzG1oaiCL8jZbI00m6HZrrTY 

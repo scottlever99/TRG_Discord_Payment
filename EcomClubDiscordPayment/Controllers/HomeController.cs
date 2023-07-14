@@ -13,17 +13,21 @@ namespace EcomClubDiscordPayment.Controllers
         private readonly DbService _dbService;
         private readonly IConfiguration _configuration;
         private readonly DiscordService _discord;
+        private readonly EmailService _emailService;
 
-        public HomeController(ILogger<HomeController> logger, DbService dbService, IConfiguration configuration, DiscordService discord)
+        public HomeController(ILogger<HomeController> logger, DbService dbService, IConfiguration configuration, DiscordService discord, EmailService emailService)
         {
             _logger = logger;
             _dbService = dbService;
             _configuration = configuration;
             _discord = discord;
+            _emailService = emailService;
         }
 
         public IActionResult Index()
         {
+            //_emailService.SendInviteEmail("leversl21@gmail.com", "https://discord.gg/aysHsx");
+
             return View();
         }
 
@@ -43,28 +47,6 @@ namespace EcomClubDiscordPayment.Controllers
 
         }
 
-        //public IActionResult StripeMonthly()
-        //{
-        //    string token = _dbService.CreateToken();
-
-        //    return Redirect("https://buy.stripe.com/28o03I7Jsgr8diw146?client_reference_id=" + token);
-
-        //}
-
-        //public IActionResult StripeSixMonthly()
-        //{
-        //    string token = _dbService.CreateToken();
-
-        //    return Redirect("{LINK}?client_reference_id=" + token);
-        //}
-
-        //public IActionResult StripeYearly()
-        //{
-        //    string token = _dbService.CreateToken();
-
-        //    return Redirect("{LINK}?client_reference_id=" + token);
-        //}
-
         public async Task<IActionResult> StripeRedirect([FromQuery]string checkout_session_id)
         {
             try
@@ -76,24 +58,28 @@ namespace EcomClubDiscordPayment.Controllers
                 var session = service.Get(checkout_session_id);
                 var token = session.ClientReferenceId;
                 var subId = session.SubscriptionId;
+                var email = session.CustomerEmail;
 
                 var code = await _discord.GetInviteCode();
 
                 if (!_dbService.Validate(token)) return BadRequest("Invalid Token");
                 _dbService.RemoveToken(token, code, checkout_session_id, subId);
-                
-                return RedirectToAction("Discord", new { code = code });
+
+                return RedirectToAction("Discord", new { code = code });//, email = email });
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return BadRequest("Process Failed. Contact: theecomclubuk@gmail.com");
+                return BadRequest("Process Failed. Contact: support@resellergroup.co.uk");
             }
         }
 
-        public IActionResult Discord([FromQuery] string code)
+        public IActionResult Discord([FromQuery] string code)//, [FromQuery] string email)
         {
-            return Redirect("https://discord.gg/" + code);
+            string link = "https://discord.gg/" + code;
+           
+            //_emailService.SendInviteEmail(email, link);
+            return Redirect(link);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
