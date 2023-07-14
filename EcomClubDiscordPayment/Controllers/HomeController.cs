@@ -43,27 +43,27 @@ namespace EcomClubDiscordPayment.Controllers
 
         }
 
-        public IActionResult StripeMonthly()
-        {
-            string token = _dbService.CreateToken();
+        //public IActionResult StripeMonthly()
+        //{
+        //    string token = _dbService.CreateToken();
 
-            return Redirect("https://buy.stripe.com/28o03I7Jsgr8diw146?client_reference_id=" + token);
+        //    return Redirect("https://buy.stripe.com/28o03I7Jsgr8diw146?client_reference_id=" + token);
 
-        }
+        //}
 
-        public IActionResult StripeSixMonthly()
-        {
-            string token = _dbService.CreateToken();
+        //public IActionResult StripeSixMonthly()
+        //{
+        //    string token = _dbService.CreateToken();
 
-            return Redirect("{LINK}?client_reference_id=" + token);
-        }
+        //    return Redirect("{LINK}?client_reference_id=" + token);
+        //}
 
-        public IActionResult StripeYearly()
-        {
-            string token = _dbService.CreateToken();
+        //public IActionResult StripeYearly()
+        //{
+        //    string token = _dbService.CreateToken();
 
-            return Redirect("{LINK}?client_reference_id=" + token);
-        }
+        //    return Redirect("{LINK}?client_reference_id=" + token);
+        //}
 
         public async Task<IActionResult> StripeRedirect([FromQuery]string checkout_session_id)
         {
