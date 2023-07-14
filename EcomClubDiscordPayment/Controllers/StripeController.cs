@@ -28,14 +28,14 @@ namespace EcomClubDiscordPayment.Controllers
         {
             string token = _dbService.CreateToken();
 
-            return Redirect("https://buy.stripe.com/28o03I7Jsgr8diw146?client_reference_id=" + token);
+            return Redirect("https://buy.stripe.com/28obMq9RAgr8fqE003?client_reference_id=" + token);
         }
 
         public IActionResult Yearly()
         {
             string token = _dbService.CreateToken();
 
-            return Redirect("https://buy.stripe.com/28o03I7Jsgr8diw146?client_reference_id=" + token);
+            return Redirect("https://buy.stripe.com/9AQ9Ei1l4gr85Q47sw?client_reference_id=" + token);
         }
     }
 }
