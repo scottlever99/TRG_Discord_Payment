@@ -65,7 +65,7 @@ namespace EcomClubDiscordPayment.Controllers
                 if (!_dbService.Validate(token)) return BadRequest("Invalid Token");
                 _dbService.RemoveToken(token, code, checkout_session_id, subId);
 
-                return RedirectToAction("Discord", new { code = code });//, email = email });
+                return RedirectToAction("Discord", new { code = code, email = email });
             }
             catch (Exception ex)
             {
@@ -74,11 +74,11 @@ namespace EcomClubDiscordPayment.Controllers
             }
         }
 
-        public IActionResult Discord([FromQuery] string code)//, [FromQuery] string email)
+        public IActionResult Discord([FromQuery] string code, [FromQuery] string email)
         {
             string link = "https://discord.gg/" + code;
            
-            //_emailService.SendInviteEmail(email, link);
+            _emailService.SendInviteEmail(email, link);
             return Redirect(link);
         }
 
