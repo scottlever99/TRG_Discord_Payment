@@ -58,7 +58,7 @@ namespace EcomClubDiscordPayment.Controllers
                 var session = service.Get(checkout_session_id);
                 var token = session.ClientReferenceId;
                 var subId = session.SubscriptionId;
-                var email = session.CustomerEmail;
+                var email = session.CustomerDetails.Email;
 
                 var code = await _discord.GetInviteCode();
 
