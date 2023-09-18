@@ -9,6 +9,7 @@ namespace EcomClubDiscordPayment.Data
 
         public DbSet<Token> token { get; set; }
         public DbSet<TokenHistory> tokenHistory { get; set; }
+        public DbSet<Subscription_Emails> subscription_emails { get; set; }
 
     }
 }

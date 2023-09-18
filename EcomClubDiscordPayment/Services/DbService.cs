@@ -58,5 +58,22 @@ namespace EcomClubDiscordPayment.Services
             if (histToken.token == token) return true;
             return false;
         }
+
+        public bool SaveEmail(string email)
+        {
+            try
+            {
+                var sub = new Subscription_Emails();
+                sub.email = email;
+                sub.created = DateTime.Now;
+                _dbContext.subscription_emails.Add(sub);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
