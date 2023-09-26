@@ -27,7 +27,7 @@ namespace EcomClubDiscordPayment.Controllers
         public IActionResult Index()
         {
             //_emailService.SendInviteEmail("leversl21@gmail.com", "https://discord.gg/aysHsx");
-
+            _emailService.SendSubCancelledEmail("asd@asd.com");
             return View();
         }
 
