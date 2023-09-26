@@ -45,7 +45,7 @@ namespace EcomClubDiscordPayment.Controllers
         public async Task<IActionResult> Webhook()
         {
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
-            const string endpointSecret = "whsec_799e58f7e5bdbc59f1ff3adb0b30310b4616b7b04994ebac080064d9dc5c3117";
+            const string endpointSecret = "whsec_Pp96L0xwyNehLK322UjNU3hWePFjg3Rr";
             try
             {
 
