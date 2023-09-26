@@ -7,7 +7,7 @@ namespace EcomClubDiscordPayment.Controllers
     public class StripeController : Controller
     {
         private readonly DbService _dbService;
-        private readonly EmailService _emailService
+        private readonly EmailService _emailService;
 
         public StripeController(DbService dbService, EmailService emailService)
         {
@@ -45,19 +45,20 @@ namespace EcomClubDiscordPayment.Controllers
         public async Task<IActionResult> Webhook()
         {
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
-            const string endpointSecret = "whsec_...";
+            const string endpointSecret = "whsec_799e58f7e5bdbc59f1ff3adb0b30310b4616b7b04994ebac080064d9dc5c3117";
             try
             {
-                var stripeEvent = EventUtility.ParseEvent(json);
-                var signatureHeader = Request.Headers["Stripe-Signature"];
 
-                stripeEvent = EventUtility.ConstructEvent(json, signatureHeader, endpointSecret);
+                var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], endpointSecret, throwOnApiVersionMismatch: false);
+                //var stripeEvent = EventUtility.ParseEvent(json);
+                //var signatureHeader = Request.Headers["Stripe-Signature"];
 
-                if (stripeEvent.Type == Events.ChargeFailed)
+                
+
+                if (stripeEvent.Type == Events.InvoicePaymentFailed)
                 {
-                    var charge = stripeEvent.Data.Object as Charge;
-                    Console.WriteLine("A FAILED payment for user {0} was made.", charge.Amount);
-                    _emailService.SendSubCancelledEmail(charge.Customer.Email);
+                    var invoice = stripeEvent.Data.Object as Invoice;
+                    _emailService.SendSubCancelledEmail(invoice.CustomerEmail, invoice.CustomerId, invoice.SubscriptionId);
                 }
                 else
                 {
