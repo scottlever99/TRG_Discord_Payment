@@ -19,7 +19,8 @@ namespace EcomClubDiscordPayment.Services
         {
             try
             {
-                string accessToken = _configuration.GetValue<string>("Discord");
+                //string accessToken = _configuration.GetValue<string>("Discord");
+                string accessToken = _configuration["Discord"];
 
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
