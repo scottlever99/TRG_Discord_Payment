@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'resellergroupdiscord'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_10772BA4A91940C78FA2595B69044A04 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6399EF70D76645AE9FBCBD9E905A2886 }}
           package: .
