@@ -41,6 +41,13 @@ namespace EcomClubDiscordPayment.Controllers
             return Redirect("https://buy.stripe.com/9AQ9Ei1l4gr85Q47sw?client_reference_id=" + token);
         }
 
+        public IActionResult PDF()
+        {
+            string token = _dbService.CreateToken();
+
+            return Redirect("https://buy.stripe.com/3csg2G8Nw1webao5kp?client_reference_id=" + token);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Webhook()
         {

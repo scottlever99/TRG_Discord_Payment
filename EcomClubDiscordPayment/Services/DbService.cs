@@ -75,5 +75,18 @@ namespace EcomClubDiscordPayment.Services
                 return false;
             }
         }
+
+        public bool InsertBookletEmail(string email)
+        {
+            try
+            {
+                _dbContext.booklet_emails.Add(new Booklet_Emails() { created = DateTime.Now, emailAddress = email });
+                return _dbContext.SaveChanges() != 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
